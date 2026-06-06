@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenamiento de Redes Neuronales con Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CONFIGURACIÓN BASE Y RESET */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: #020617; 
+            font-family: 'Inter', sans-serif; 
+            color: #f8fafc; 
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ESCENARIO DE LA PRESENTACIÓN (Ajuste base proporcional 16:9) */
+        .presentation-deck {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            transform-origin: center center;
+            flex-shrink: 0;
+        }
+        
+        /* SISTEMA DE DIAPOSITIVAS */
+        .slide-container {
+            width: 100%; 
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex; 
+            flex-direction: column;
+            padding: 80px 120px; 
+            background-color: #020617;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1;
+        }
+
+        /* Diapositiva Activa */
+        .slide-container.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
+        }
+
+        /* EFECTO DE FONDO ABSTRACTO */
+        .slide-container::before {
+            content: ''; 
+            position: absolute; 
+            top: -10%; 
+            right: -10%; 
+            width: 800px; 
+            height: 800px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%); 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* TIPOGRAFÍA Y ESTILOS REUTILIZABLES */
+        h1, h2, h3 { font-family: 'Urbanist', sans-serif; font-weight: 700; color: #f1f5f9; z-index: 1; }
+        .slide-title { font-size: 54px; margin-bottom: 50px; border-left: 8px solid #38bdf8; padding-left: 30px; text-transform: uppercase; letter-spacing: 1px; }
+        p, li { font-size: 28px; line-height: 1.6; color: #94a3b8; }
+        strong { color: #38bdf8; }
+
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; z-index: 1; min-height: 0; }
+        
+        /* ESTRUCTURAS DE CONTENIDO */
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        
+        .tiled-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; width: 100%; }
+        .tile { background: #0f172a; padding: 50px; border-radius: 20px; border: 1px solid #1e293b; height: 100%; }
+        .tile .icon { font-size: 54px; color: #38bdf8; margin-bottom: 30px; }
+        .tile h3 { font-size: 32px; margin-bottom: 20px; }
+
+        .image-wrapper { border-radius: 20px; overflow: hidden; background: #0f172a; border: 1px solid #1e293b; display: flex; justify-content: center; align-items: center; height: 500px; position: relative; }
+
+        /* BLOQUES DE CÓDIGO */
+        .code-block { background: #0f172a; padding: 45px; border-radius: 20px; border: 1px solid #1e293b; font-family: 'Courier New', Courier, monospace; color: #a5f3fc; font-size: 24px; line-height: 1.5; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); white-space: pre-wrap; }
+        .code-keyword { color: #f472b6; }
+        .code-comment { color: #64748b; }
+
+        /* TABLAS INTERNAS */
+        .table-layout table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .table-layout th { background: #0f172a; color: #38bdf8; text-align: left; padding: 30px; font-size: 30px; border-bottom: 4px solid #1e293b; }
+        .table-layout td { padding: 30px; border-bottom: 1px solid #1e293b; font-size: 26px; vertical-align: top; line-height: 1.8; }
+
+        /* DIAPOSITIVAS ESPECIALES */
+        /* Portada */
+        .title-layout { text-align: center; justify-content: center; height: 100%; display: flex; flex-direction: column; align-items: center; }
+        .title-layout h1 { font-size: 96px; line-height: 1.1; margin-bottom: 30px; }
+        .title-layout h1 span { color: #38bdf8; }
+        .title-layout .subtitle { font-size: 36px; color: #64748b; max-width: 1200px; margin: 0 auto; }
+
+        /* Separadores de Sección */
+        .section-title-layout { text-align: center; justify-content: center; height: 100%; display: flex; flex-direction: column; align-items: center; }
+        .section-title-layout h2 { font-size: 90px; margin-bottom: 15px; }
+        .section-title-layout hr { width: 160px; height: 8px; background: #38bdf8; border: none; margin: 40px auto; border-radius: 4px; }
+        .section-title-layout p { font-size: 36px; color: #64748b; }
+
+        /* Controles visuales (Se mantienen fijos en el viewport del navegador) */
+        .nav-instructions {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            font-size: 16px; color: #475569; z-index: 100; pointer-events: none;
+            background: rgba(2, 6, 23, 0.85); padding: 8px 25px; border-radius: 25px;
+            font-family: sans-serif; letter-spacing: 0.5px; border: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-instructions">Usa las flechas del teclado o haz clic para avanzar</div>
+
+<div class="presentation-deck" id="deck">
+
+    <div class="slide-container active">
+        <div class="title-layout">
+            <h1>Entrenamiento de<br><span>Redes Neuronales</span></h1>
+            <p class="subtitle" style="margin-bottom: 70px;">Resolución de Problemas de Regresión y Clasificación con Python</p>
+            
+            <div style="border-top: 1px solid #1e293b; padding-top: 35px; width: 600px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 18px; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">Facilitador</p>
+                <p style="font-family: 'Urbanist', sans-serif; font-size: 32px; font-weight: 600; color: #f1f5f9; margin-bottom: 6px;">Ing. Héctor Martínez</p>
+                <p style="font-size: 22px; color: #38bdf8; font-weight: 500; margin-bottom: 18px;">Analista de la Unidad de Telecomunicaciones</p>
+                
+                <p style="font-size: 18px; color: #475569; text-transform: uppercase; letter-spacing: 1px; border-top: 1px dashed #1e293b; padding-top: 16px;">
+                    Agencia Bolivariana para Actividades Espaciales
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Agenda del Taller (2 Sesiones)</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color:#38bdf8; margin-bottom: 25px; font-size: 36px;"><i class="fa-solid fa-square-root-variable" style="margin-right: 20px;"></i>Sesión 1: Regresión en Física</h3>
+                    <p style="margin-bottom: 20px;">Abordaje de magnitudes continuas sin modelos analíticos preestablecidos.</p>
+                    <ul style="padding-left: 30px;">
+                        <li style="font-size: 24px; margin-bottom: 12px;">Fundamentos de la neurona y perceptrón.</li>
+                        <li style="font-size: 24px; margin-bottom: 12px;">Capas densas y Activación Lineal.</li>
+                        <li style="font-size: 24px; margin-bottom: 12px;">Práctica: Predicción de una magnitud física continua.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color:#38bdf8; margin-bottom: 25px; font-size: 36px;"><i class="fa-solid fa-images" style="margin-right: 20px;"></i>Sesión 2: Clasificación de Imágenes</h3>
+                    <p style="margin-bottom: 20px;">Entrenamiento multiclase utilizando conjuntos de datos estructurados en TensorFlow.</p>
+                    <ul style="padding-left: 30px;">
+                        <li style="font-size: 24px; margin-bottom: 12px;">Tensores y normalización escalar de píxeles.</li>
+                        <li style="font-size: 24px; margin-bottom: 12px;">Aplanado de matrices (Flatten), Softmax y Cross-Entropy.</li>
+                        <li style="font-size: 24px; margin-bottom: 12px;">Práctica: Clasificador de categorías de prendas de vestir.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Conceptos Fundamentales</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>La Neurona</h3>
+                    <p>Unidad matemática elemental que procesa combinaciones lineales ponderadas mediante pesos y sesgos.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Capas Ocultas</h3>
+                    <p>Niveles intermedios de abstracción profunda que extraen características complejas de los datos.</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+                    <h3>Activación</h3>
+                    <p>Funciones matemáticas (ReLU, Sigmoid) encargadas de romper la linealidad del flujo de datos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Criterios de Diseño Arquitectónico</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <p style="margin-bottom: 35px; font-size: 32px;">Configuración de hiperparámetros según la naturaleza del problema:</p>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 25px;"><i class="fa-solid fa-circle-nodes" style="color:#38bdf8; margin-right: 20px;"></i> <strong>Topología de Red:</strong> Decisión sobre la densidad de nodos intermedios para evitar el infra o sobreajuste.</li>
+                        <li style="margin-bottom: 25px;"><i class="fa-solid fa-arrow-up-right-from-square" style="color:#38bdf8; margin-right: 20px;"></i> <strong>Capa de Salida:</strong> Un único nodo (Regresión) frente a múltiples nodos independientes (Clasificación).</li>
+                        <li style="margin-bottom: 25px;"><i class="fa-solid fa-gears" style="color:#38bdf8; margin-right: 20px;"></i> <strong>Activación Final:</strong> Lineal pura para rangos continuos; Softmax para distribuciones probabilísticas categóricas.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper" style="padding: 0;">
+                    <img src="https://images.stockcake.com/public/4/4/8/448a9e4e-9294-40ab-99af-7268ef3f3f9d_medium/ai-neural-network-stockcake.jpg" 
+                         alt="AI Neural Network" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Sesión 1: Regresión en Física</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="image-wrapper" style="padding: 0;">
+                    <img src="https://plotivy.app/_next/image?url=%2Fcharts_gallery%2Fquiver-plot%2Fplotivy-quiver-plot.png&w=1280&q=70" 
+                         alt="Física Continuo Quiver Plot" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div>
+                    <h3>Aproximación de Funciones Físicas</h3>
+                    <p style="margin-bottom: 25px;">Utilizaremos la red para mapear de manera aproximada el comportamiento de una magnitud física basándonos puramente en observaciones experimentales.</p>
+                    <p><strong>Ventaja Metodológica:</strong> El algoritmo deduce de manera autónoma las interacciones y la tendencia del fenómeno continuo, eludiendo la necesidad de codificar la ecuación física de control.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Sesión 2: Clasificación de Imágenes</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3>El Desafío de Fashion-MNIST</h3>
+                    <p style="margin-bottom: 25px;">Trabajaremos con un benchmark clásico compuesto por 70,000 muestras digitalizadas en escala de grises distribuidas simétricamente en 10 clases de prendas.</p>
+                    <p>Este ejercicio ilustra de manera directa la transición del tratamiento matemático de vectores planos estándar a matrices espaciales en problemas de visión por computador.</p>
+                </div>
+                <div class="image-wrapper" style="padding: 0; background-color: #000;">
+                    <img src="https://www.christianhaller.me/assets/img/research/FashionMNIST/fashion10x10row.jpg" 
+                         alt="Fashion-MNIST Dataset Matrix" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">De Píxeles a Tensores</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div class="code-block">
+<span class="code-comment"># Normalización escalar de los píxeles [0, 255]</span>
+train_images = train_images / 255.0
+test_images = test_images / 255.0
+
+<span class="code-comment"># Inspección de la estructura dimensional</span>
+print(train_images.shape) 
+<span class="code-comment"># Salida esperada: (60000, 28, 28)</span>
+                </div>
+                <div>
+                    <h3>Preprocesamiento Esencial</h3>
+                    <p style="margin-bottom: 25px;">Los optimizadores basados en gradiente operan con mayor estabilidad numérica cuando las señales de entrada se encuentran en el intervalo acotado [0, 1].</p>
+                    <p>Dividiremos las matrices de entrada por el valor máximo de intensidad del píxel para facilitar la convergencia homogénea de los pesos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Mecánica del Flujo de Datos</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 25px;"><strong style="color: #f1f5f9;">1. Capa Flatten (Aplanado):</strong> Desenrolla matrices espaciales de 28x28 elementos en un único vector de entrada de 784 dimensiones.</li>
+                        <li style="margin-bottom: 25px;"><strong style="color: #f1f5f9;">2. Capas Densas (MLP):</strong> Red densamente interconectada orientada a extraer abstracciones estructurales.</li>
+                        <li style="margin-bottom: 25px;"><strong style="color: #f1f5f9;">3. Softmax Terminal:</strong> Normaliza las salidas mapeando valores a una distribución de probabilidad de 10 clases excluyentes.</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper" style="padding: 0; background-color: #fff;">
+                    <img src="https://miro.medium.com/1*laCiveXbzbigj4fvDrP2XA.jpeg" 
+                         alt="Neural Network Multiclass Classification Diagram" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Métricas y Pérdidas Comparadas</h2>
+        <div class="content-area">
+            <div class="table-layout">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parámetro Operacional</th>
+                            <th>Caso 1: Regresión Física</th>
+                            <th>Caso 2: Clasificación de Imágenes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Función de Pérdida (Loss)</strong></td>
+                            <td>Mean Squared Error (MSE)</td>
+                            <td>Sparse Categorical Cross-Entropy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Activación Final / Nodos</strong></td>
+                            <td>Lineal (Purelin) / 1 Nodo</td>
+                            <td>Softmax / 10 Nodos distribuidos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Métrica de Evaluación</strong></td>
+                            <td>Mean Absolute Error (MAE)</td>
+                            <td>Accuracy (Tasa de Acierto)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Implementación Práctica en Keras</h2>
+        <div class="content-area">
+            <div class="code-block" style="font-size: 26px; line-height: 1.6;">
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation=<span class="code-keyword">'relu'</span>),
+    keras.layers.Dense(10, activation=<span class="code-keyword">'softmax'</span>)
+])
+
+model.compile(optimizer=<span class="code-keyword">'adam'</span>,
+              loss=<span class="code-keyword">'sparse_categorical_crossentropy'</span>,
+              metrics=[<span class="code-keyword">'accuracy'</span>])
+            </div>
+            <p style="margin-top: 35px; text-align: center; color: #64748b;">La API secuencial provee una abstracción limpia ideal para la asimilación conceptual directa.</p>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Límites de la Introducción</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <h3 style="color:#f43f5e; margin-bottom: 25px; font-size: 36px;"><i class="fa-solid fa-circle-xmark" style="margin-right: 20px;"></i>Exclusiones Explícitas:</h3>
+                    <ul style="padding-left: 30px; line-height: 2;">
+                        <li>Arquitecturas de Convolución Profunda (CNN).</li>
+                        <li>Aumento sintético de datos (Data Augmentation).</li>
+                        <li>Gestión física de hardware local (CUDA GPUs/TPUs).</li>
+                        <li>Despliegue operativo en producción (APIs / Cloud).</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Este alcance condensado tiene como fin prioritario dotar al personal de los <strong>cimientos teóricos y prácticos transferibles</strong> indispensables para escalar con autonomía hacia estructuras de mayor envergadura.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-container">
+        <div class="section-title-layout">
+            <h2 style="font-size: 110px;">¿Preguntas o Comentarios?</h2>
+            <hr>
+            <p style="font-size: 38px;">Optimizando la resolución de problemas mediante Inteligencia Artificial.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const deck = document.getElementById('deck');
+    const slides = document.querySelectorAll('.slide-container');
+    let currentSlide = 0;
+
+    // 1. FUNCIÓN DE ESCALADO DINÁMICO RESILIENTE
+    function adjustScale() {
+        const baseWidth = 1920;
+        const baseHeight = 1080;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // Determinar la escala restrictiva más óptima (ancho vs alto)
+        const scaleX = windowWidth / baseWidth;
+        const scaleY = windowHeight / baseHeight;
+        const scale = Math.min(scaleX, scaleY);
+
+        // Aplicar transformación matricial centralizada
+        deck.style.transform = `scale(${scale})`;
+    }
+
+    // Escuchar cambios de redimensionamiento de pantalla
+    window.addEventListener('resize', adjustScale);
+    window.addEventListener('DOMContentLoaded', adjustScale);
+
+    // 2. SISTEMA DE NAVEGACIÓN ENTRE DIAPOSITIVAS
+    function showSlide(index) {
+        if (index >= slides.length) index = 0;
+        if (index < 0) index = slides.length - 1;
+
+        slides[currentSlide].classList.remove('active');
+        slides[index].classList.add('active');
+        currentSlide = index;
+    }
+
+    // Control por Teclado (Derecha/Espacio avanzan, Izquierda retrocede)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            showSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+            showSlide(currentSlide - 1);
+        }
+    });
+
+    // Control por Clic (Mitad derecha avanza, mitad izquierda retrocede)
+    document.addEventListener('click', (e) => {
+        const screenWidth = window.innerWidth;
+        if (e.clientX > screenWidth / 2) {
+            showSlide(currentSlide + 1);
+        } else {
+            showSlide(currentSlide - 1);
+        }
+    });
+</script>
+
+</body>
+</html>
