@@ -16,8 +16,8 @@ Puedes ejecutar los laboratorios directamente en la nube haciendo clic en los si
 
 | Sesión | Componente Práctico | Enlace de Ejecución |
 | :--- | :--- | :--- |
-| **Sesión 1** | Laboratorio de Regresión en Física (Estimación Continua) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb) |
-| **Sesión 2** | Laboratorio de Clasificación de Imágenes (Vision Artificial) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb) |
+| **Sesión 1** | Laboratorio de Regresión en Física (Estimación Continua) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true) |
+| **Sesión 2** | Laboratorio de Clasificación de Imágenes (Vision Artificial) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true) |
 
 ---
 
