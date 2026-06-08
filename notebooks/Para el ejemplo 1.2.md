@@ -1,6 +1,6 @@
 ## Para el ejemplo 1.1
 
-> cambiar de 60 epocas a 200 cambia sensibelmente la aproximacion del sesgo del modelo
+> cambiar de 60 epocas a 200 cambia sensiblemente la aproximacion del sesgo del modelo
 
 
 ## Para el ejemplo 1.2
