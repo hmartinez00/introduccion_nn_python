@@ -11,6 +11,10 @@ El objetivo fundamental es dotar a los participantes de los cimientos teóricos 
 
 Para garantizar una experiencia fluida y **cero configuraciones locales de hardware o dependencias (CUDA, Anaconda, etc.)**, el taller se imparte de forma nativa sobre **Google Colab**. 
 
+### Presentación del taller
+
+Disponible en el siguiente [enlace](https://hmartinezdev.com:8081/storage/uploads/simpleproject_6a22f2e272919_introduccion-nn-python.html).
+
 ### Cuadernos de Práctica (Notebooks)
 Puedes ejecutar los laboratorios directamente en la nube haciendo clic en los siguientes botones:
 
@@ -18,6 +22,9 @@ Puedes ejecutar los laboratorios directamente en la nube haciendo clic en los si
 | :--- | :--- | :--- |
 | **Sesión 1** | Laboratorio de Regresión en Física (Estimación Continua) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true) |
 | **Sesión 2** | Laboratorio de Clasificación de Imágenes (Vision Artificial) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true) |
+| **Cuaderno práctico GNSS** | Laboratorio de retos - Navegación | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_gnss.ipynb#copy=true) |
+| **Cuaderno práctico SS** | Laboratorio de retos - Sistemas Espaciales | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_ss.ipynb#copy=true) |
+
 
 ---
 
