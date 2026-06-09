@@ -98,6 +98,30 @@
         .table-layout th { background: #0f172a; color: #38bdf8; text-align: left; padding: 30px; font-size: 30px; border-bottom: 4px solid #1e293b; }
         .table-layout td { padding: 30px; border-bottom: 1px solid #1e293b; font-size: 26px; vertical-align: top; line-height: 1.8; }
 
+        /* ESTILOS PARA BOTONES DE COLAB */
+        .colab-button {
+            display: inline-block;
+            padding: 10px 18px !important;
+            background: #38bdf8 !important;
+            color: #020617 !important;
+            border-radius: 6px;
+            text-decoration: none !important;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .colab-button:hover {
+            background: #0ea5e9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(56, 189, 248, 0.3);
+        }
+
+        .colab-button:active {
+            transform: translateY(0);
+        }
+
         /* DIAPOSITIVAS ESPECIALES */
         /* Portada */
         .title-layout { text-align: center; justify-content: center; height: 100%; display: flex; flex-direction: column; align-items: center; }
@@ -168,9 +192,320 @@
             color: #38bdf8;
             font-size: 16px;
         }
+
+        /* PANEL LATERAL RETRACTIL */
+        .sidebar-panel {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 350px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-right: 1px solid #1e293b;
+            z-index: 50;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: transform 0.3s ease, width 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 70px;
+        }
+
+        .sidebar-panel.collapsed {
+            transform: translateX(-100%);
+            width: 0;
+        }
+
+        .sidebar-header {
+            padding: 30px 25px 20px;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .sidebar-header h3 {
+            font-size: 18px;
+            color: #38bdf8;
+            font-weight: 600;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 15px;
+        }
+
+        .slide-nav-item {
+            padding: 15px 20px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #94a3b8;
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+        }
+
+        .slide-nav-item:hover {
+            background: rgba(56, 189, 248, 0.08);
+            color: #38bdf8;
+            border-left-color: #38bdf8;
+        }
+
+        .slide-nav-item.active {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+            border-left-color: #38bdf8;
+            font-weight: 600;
+        }
+
+        .slide-nav-item .slide-num {
+            font-size: 14px;
+            color: #64748b;
+            min-width: 30px;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .slide-nav-item.active .slide-num {
+            background: #38bdf8;
+            color: #020617;
+        }
+
+        /* BOTÓN TOGGLE SIDEBAR */
+        .sidebar-toggle {
+            position: fixed;
+            left: 20px;
+            top: 30px;
+            z-index: 60;
+            background: rgba(2, 6, 23, 0.85);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #38bdf8;
+            font-size: 20px;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .sidebar-toggle:hover {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #38bdf8;
+            transform: scale(1.05);
+        }
+
+        .sidebar-toggle.open {
+            left: 365px;
+        }
+
+        /* SCROLLBAR PERSONALIZADA */
+        .sidebar-nav::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-thumb {
+            background: rgba(56, 189, 248, 0.3);
+            border-radius: 3px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-thumb:hover {
+            background: rgba(56, 189, 248, 0.5);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 2560px) {
+            .sidebar-panel {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 1920px) {
+            .sidebar-panel {
+                width: 320px;
+            }
+
+            .sidebar-toggle.open {
+                left: 335px;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            .sidebar-panel {
+                width: 300px;
+            }
+
+            .sidebar-toggle.open {
+                left: 315px;
+            }
+
+            .slide-nav-item {
+                font-size: 15px;
+                padding: 12px 16px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            .sidebar-panel {
+                width: 280px;
+                padding-top: 60px;
+            }
+
+            .sidebar-toggle.open {
+                left: 295px;
+            }
+
+            .sidebar-header {
+                padding: 20px 20px 15px;
+            }
+
+            .slide-nav-item {
+                font-size: 14px;
+                padding: 12px 14px;
+                gap: 10px;
+            }
+
+            .slide-nav-item .slide-num {
+                font-size: 12px;
+                padding: 3px 6px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar-panel {
+                width: 250px;
+            }
+
+            .sidebar-toggle.open {
+                left: 265px;
+            }
+
+            .slide-title {
+                font-size: 44px;
+                padding-left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar-panel {
+                width: 220px;
+            }
+
+            .sidebar-toggle {
+                left: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .sidebar-toggle.open {
+                left: 235px;
+            }
+
+            .sidebar-header {
+                padding: 15px 15px 10px;
+            }
+
+            .sidebar-header h3 {
+                font-size: 14px;
+            }
+
+            .slide-nav-item {
+                font-size: 13px;
+                padding: 10px 12px;
+                gap: 8px;
+            }
+
+            .slide-nav-item .slide-num {
+                font-size: 11px;
+                padding: 2px 5px;
+                min-width: 25px;
+            }
+
+            .nav-instructions {
+                font-size: 11px;
+            }
+
+            .slide-counter {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+
+            .repo-link {
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar-panel {
+                width: 200px;
+            }
+
+            .sidebar-toggle.open {
+                left: 215px;
+            }
+
+            .slide-title {
+                font-size: 32px;
+            }
+
+            p, li {
+                font-size: 18px;
+            }
+
+            .nav-instructions {
+                font-size: 10px;
+                bottom: 15px;
+            }
+
+            .slide-counter {
+                bottom: 15px;
+                right: 15px;
+                font-size: 11px;
+            }
+
+            .repo-link {
+                top: 15px;
+                right: 15px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
+
+<!-- PANEL LATERAL RETRACTIL -->
+<button class="sidebar-toggle" id="sidebarToggle" title="Mostrar/Ocultar navegación">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="sidebar-panel" id="sidebarPanel">
+    <div class="sidebar-header">
+        <h3>Navegación</h3>
+    </div>
+    <nav class="sidebar-nav" id="slidesNav">
+        <!-- Se llenará dinámicamente con JavaScript -->
+    </nav>
+</div>
 
 <div class="repo-link">
     <i class="fa-brands fa-github"></i>
@@ -426,6 +761,63 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         </div>
     </div>
 
+    <div class="slide-container">
+        <h2 class="slide-title">Laboratorios Prácticos</h2>
+        <div class="content-area">
+            <div class="table-layout" style="padding: 0 40px;">
+                <p style="font-size: 24px; color: #94a3b8; margin-bottom: 30px; text-align: center;">Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:</p>
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%; text-align: left;">Sesión</th>
+                            <th style="width: 45%; text-align: left;">Componente Práctico</th>
+                            <th style="width: 35%; text-align: center;">Enlace de Ejecución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">Sesión 1</strong></td>
+                            <td>Laboratorio de Regresión en Física<br><span style="font-size: 18px; color: #64748b;">(Estimación Continua)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">Sesión 2</strong></td>
+                            <td>Laboratorio de Clasificación de Imágenes<br><span style="font-size: 18px; color: #64748b;">(Visión Artificial)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <td><strong style="color: #38bdf8;">GNSS</strong></td>
+                            <td>Laboratorio de Retos - Navegación<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_gnss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">SS</strong></td>
+                            <td>Laboratorio de Retos - Sistemas Espaciales<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_ss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <p style="font-size: 18px; color: #64748b; margin-top: 30px; text-align: center; font-style: italic;">✨ Todos los laboratorios se ejecutan en la nube sin necesidad de instalar dependencias locales</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -433,33 +825,148 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
     const slides = document.querySelectorAll('.slide-container');
     const slideIndexEl = document.getElementById('slide-index');
     const slideTotalEl = document.getElementById('slide-total');
+    const sidebarPanel = document.getElementById('sidebarPanel');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const slidesNav = document.getElementById('slidesNav');
     let currentSlide = 0;
+    let sidebarOpen = true;
 
+    // FUNCIÓN PARA EXTRAER TÍTULOS DE LAS LÁMINAS
+    function extractSlideTitles() {
+        const titles = [];
+        
+        slides.forEach((slide, index) => {
+            let title = '';
+            
+            // Buscar título en diferentes formatos
+            const titleEl = slide.querySelector('.slide-title');
+            const h1El = slide.querySelector('h1');
+            const h2El = slide.querySelector('.section-title-layout h2');
+            
+            if (titleEl) {
+                title = titleEl.textContent.trim();
+            } else if (h1El) {
+                title = h1El.textContent.trim();
+            } else if (h2El) {
+                title = h2El.textContent.trim();
+            } else {
+                title = `Lámina ${index + 1}`;
+            }
+            
+            titles.push(title);
+        });
+        
+        return titles;
+    }
+
+    // FUNCIÓN PARA GENERAR NAVEGACIÓN DINÁMICA
+    function buildSidebarNav() {
+        const titles = extractSlideTitles();
+        slidesNav.innerHTML = '';
+        
+        titles.forEach((title, index) => {
+            const navItem = document.createElement('div');
+            navItem.className = 'slide-nav-item';
+            if (index === 0) navItem.classList.add('active');
+            
+            navItem.innerHTML = `
+                <span class="slide-num">${index + 1}</span>
+                <span class="slide-title-text">${title}</span>
+            `;
+            
+            navItem.addEventListener('click', () => {
+                showSlide(index);
+                // Scroll suave al elemento activo
+                setTimeout(() => {
+                    navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 50);
+            });
+            
+            navItem.addEventListener('mouseenter', function() {
+                this.title = title;
+            });
+            
+            slidesNav.appendChild(navItem);
+        });
+    }
+
+    // FUNCIÓN PARA MANEJAR TOGGLE DEL SIDEBAR
+    function toggleSidebar() {
+        sidebarOpen = !sidebarOpen;
+        if (sidebarOpen) {
+            sidebarPanel.classList.remove('collapsed');
+            sidebarToggle.classList.add('open');
+        } else {
+            sidebarPanel.classList.add('collapsed');
+            sidebarToggle.classList.remove('open');
+        }
+        // Recalcular escala cuando cambia el tamaño disponible
+        setTimeout(adjustScale, 300);
+    }
+
+    sidebarToggle.addEventListener('click', toggleSidebar);
+
+    // Recalcular escala cuando termina la animación del sidebar
+    sidebarPanel.addEventListener('transitionend', () => {
+        adjustScale();
+    });
+
+    // FUNCIÓN PARA ACTUALIZAR CONTADOR DE LÁMINAS
     function updateSlideCounter(index) {
         slideIndexEl.textContent = index + 1;
         slideTotalEl.textContent = slides.length;
+        
+        // Actualizar elemento activo en sidebar
+        const navItems = slidesNav.querySelectorAll('.slide-nav-item');
+        navItems.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
     }
 
     // 1. FUNCIÓN DE ESCALADO DINÁMICO RESILIENTE
     function adjustScale() {
         const baseWidth = 1920;
         const baseHeight = 1080;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+        let availableWidth = window.innerWidth;
+        const availableHeight = window.innerHeight;
+
+        // Si el sidebar está abierto, obtener su ancho actual (considera breakpoints responsivos)
+        if (sidebarOpen) {
+            const sidebarWidth = sidebarPanel.offsetWidth;
+            availableWidth = Math.max(0, availableWidth - sidebarWidth);
+        }
 
         // Determinar la escala restrictiva más óptima (ancho vs alto)
-        const scaleX = windowWidth / baseWidth;
-        const scaleY = windowHeight / baseHeight;
-        const scale = Math.min(scaleX, scaleY);
+        // Evitar divisiones por cero y limitar escala máxima a 1
+        const scaleX = availableWidth > 0 ? availableWidth / baseWidth : 0;
+        const scaleY = availableHeight > 0 ? availableHeight / baseHeight : 0;
+        const scale = Math.min(scaleX, scaleY, 1);
 
         // Aplicar transformación matricial centralizada
         deck.style.transform = `scale(${scale})`;
     }
 
-    // Escuchar cambios de redimensionamiento de pantalla
-    window.addEventListener('resize', adjustScale);
+    // Escuchar cambios de redimensionamiento de pantalla con debouncing
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            adjustScale();
+        }, 150);
+    });
+
+    // Escuchar cambios de orientación en dispositivos móviles
+    window.addEventListener('orientationchange', () => {
+        setTimeout(adjustScale, 300);
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
         adjustScale();
+        buildSidebarNav();
         updateSlideCounter(currentSlide);
     });
 
@@ -485,6 +992,11 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
 
     // Control por Clic (Mitad derecha avanza, mitad izquierda retrocede)
     document.addEventListener('click', (e) => {
+        // No navegar si hace clic en el sidebar o en el botón toggle
+        if (e.target.closest('.sidebar-panel') || e.target.closest('.sidebar-toggle')) {
+            return;
+        }
+        
         const screenWidth = window.innerWidth;
         if (e.clientX > screenWidth / 2) {
             showSlide(currentSlide + 1);
