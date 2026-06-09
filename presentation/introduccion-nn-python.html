@@ -42,7 +42,7 @@
             left: 0;
             display: flex; 
             flex-direction: column;
-            padding: 80px 120px; 
+            padding: 160px 120px 80px 120px; 
             background-color: #020617;
             opacity: 0;
             visibility: hidden;
@@ -331,6 +331,95 @@
             background: rgba(56, 189, 248, 0.5);
         }
 
+        /* PANEL SUPERIOR DE PESTAÑAS */
+        .tabs-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-bottom: 2px solid #1e293b;
+            z-index: 55;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 30px;
+        }
+
+        .tab-button {
+            padding: 20px 24px;
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            color: #38bdf8;
+        }
+
+        .tab-button.active {
+            color: #38bdf8;
+            border-bottom-color: #38bdf8;
+        }
+
+        .tab-button i {
+            font-size: 18px;
+        }
+
+        /* Ajuste para acomodar el panel de tabs */
+        body {
+            padding-top: 0;
+        }
+
+        .sidebar-panel {
+            padding-top: 130px;
+        }
+
+        .sidebar-toggle {
+            top: 80px;
+        }
+
+        .repo-link {
+            top: 80px;
+        }
+
+        /* RESPONSIVE TABS */
+        @media (max-width: 768px) {
+            .tabs-panel {
+                height: 60px;
+                padding: 0 15px;
+                gap: 15px;
+            }
+
+            .tab-button {
+                padding: 15px 16px;
+                font-size: 14px;
+            }
+
+            .sidebar-panel {
+                padding-top: 110px;
+            }
+
+            .sidebar-toggle {
+                top: 70px;
+            }
+
+            .repo-link {
+                top: 70px;
+            }
+        }
+
         /* RESPONSIVE */
         @media (max-width: 2560px) {
             .sidebar-panel {
@@ -339,6 +428,10 @@
         }
 
         @media (max-width: 1920px) {
+            .slide-container {
+                padding: 160px 115px 80px 115px;
+            }
+
             .sidebar-panel {
                 width: 320px;
             }
@@ -349,6 +442,10 @@
         }
 
         @media (max-width: 1600px) {
+            .slide-container {
+                padding: 155px 110px 80px 110px;
+            }
+
             .sidebar-panel {
                 width: 300px;
             }
@@ -364,6 +461,10 @@
         }
 
         @media (max-width: 1280px) {
+            .slide-container {
+                padding: 150px 105px 80px 105px;
+            }
+
             .sidebar-panel {
                 width: 280px;
                 padding-top: 60px;
@@ -402,9 +503,17 @@
                 font-size: 44px;
                 padding-left: 20px;
             }
+
+            .slide-container {
+                padding: 150px 100px 80px 100px;
+            }
         }
 
         @media (max-width: 768px) {
+            .slide-container {
+                padding: 140px 80px 70px 80px;
+            }
+
             .sidebar-panel {
                 width: 220px;
             }
@@ -456,6 +565,10 @@
         }
 
         @media (max-width: 480px) {
+            .slide-container {
+                padding: 130px 60px 60px 60px;
+            }
+
             .sidebar-panel {
                 width: 200px;
             }
@@ -492,6 +605,16 @@
     </style>
 </head>
 <body>
+
+<!-- PANEL SUPERIOR DE PESTAÑAS -->
+<div class="tabs-panel" id="tabsPanel">
+    <button class="tab-button active" data-tab="0">
+        <i class="fa-solid fa-book"></i> Contenido
+    </button>
+    <button class="tab-button" data-tab="1">
+        <i class="fa-solid fa-flask"></i> Recursos Compartidos
+    </button>
+</div>
 
 <!-- PANEL LATERAL RETRACTIL -->
 <button class="sidebar-toggle" id="sidebarToggle" title="Mostrar/Ocultar navegación">
@@ -762,7 +885,7 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Laboratorios Prácticos</h2>
+        <h2 class="slide-title">Laboratorios Prácticos y Recursos Compartidos</h2>
         <div class="content-area">
             <div class="table-layout" style="padding: 0 40px;">
                 <p style="font-size: 24px; color: #94a3b8; margin-bottom: 30px; text-align: center;">Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:</p>
@@ -818,6 +941,88 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         </div>
     </div>
 
+    <div class="slide-container">
+        <h2 class="slide-title">Hoja de Ruta de Ingeniería</h2>
+        <div class="content-area">
+            <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f8fafc; display: flex; flex-direction: column; gap: 30px;">
+        
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+            
+                    <div style="background-color: #111827; border: 1px solid #374151; border-top: 4px solid #9ca3af; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="background-color: rgba(156, 163, 175, 0.1); color: #9ca3af; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;">FASE 0</div>
+                            <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">Canal de Datos</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0 0 16px 0;">Preparación y adecuación de telemetrías crudas.</p>
+                            
+                            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #e2e8f0; line-height: 1.8;">
+                                <li style="margin-bottom: 10px;"><b>1. Partición:</b> División de datos (Train/Val/Test).</li>
+                                <li><b>2. Consistencia:</b> Geometría dimensional de entrada.</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; background-color: #1f2937; padding: 10px; border-radius: 6px; text-align: center; font-family: monospace; font-size: 12px; color: #9ca3af; border: 1px solid #374151;">
+                            np.clip() / vstack()
+                        </div>
+                    </div>
+
+                    <div style="background-color: #111827; border: 1px solid #1e3a8a; border-top: 4px solid #3b82f6; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;">ETAPA A</div>
+                            <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">Definición</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0 0 16px 0;">Diseño anatomico del modelo no lineal.</p>
+                            
+                            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #e2e8f0; line-height: 1.8;">
+                                <li style="margin-bottom: 10px;"><b>3. Densidad:</b> Profundidad estructural.</li>
+                                <li style="margin-bottom: 10px;"><b>4. Neuronas:</b> Capacidad de abstracción.</li>
+                                <li><b>5. Activación:</b> ReLU, Tanh, Softmax.</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; background-color: #1e2235; padding: 10px; border-radius: 6px; text-align: center; font-family: monospace; font-size: 12px; color: #3b82f6; border: 1px solid #1e3a8a;">
+                            keras.Sequential()
+                        </div>
+                    </div>
+
+                    <div style="background-color: #111827; border: 1px solid #2e1065; border-top: 4px solid #a855f7; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="background-color: rgba(168, 85, 247, 0.1); color: #a855f7; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;">ETAPA B</div>
+                            <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">Compilación</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0 0 16px 0;">Configuración de optimización y aprendizaje.</p>
+                            
+                            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #e2e8f0; line-height: 1.8;">
+                                <li style="margin-bottom: 10px;"><b>6. Optimizador:</b> Descenso de gradiente (Adam).</li>
+                                <li style="margin-bottom: 10px;"><b>7. Learning Rate:</b> Calibración del paso.</li>
+                                <li><b>8. Pérdida:</b> MSE / Cross-Entropy.</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; background-color: #25183a; padding: 10px; border-radius: 6px; text-align: center; font-family: monospace; font-size: 12px; color: #a855f7; border: 1px solid #2e1065;">
+                            model.compile()
+                        </div>
+                    </div>
+
+                    <div style="background-color: #111827; border: 1px solid #064e3b; border-top: 4px solid #10b981; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <div style="background-color: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 16px;">ETAPA C</div>
+                            <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 12px 0; color: #ffffff;">Entrenamiento</h3>
+                            <p style="font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0 0 16px 0;">Ciclo iterativo y auditoría de pesos.</p>
+                            
+                            <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: #e2e8f0; line-height: 1.8;">
+                                <li><b>9. Épocas e Inferencia:</b> Control estricto de iteraciones y mitigación de sobreajuste mediante validación cruzada.</li>
+                            </ul>
+                        </div>
+                        <div style="margin-top: 20px; background-color: #142c22; padding: 10px; border-radius: 6px; text-align: center; font-family: monospace; font-size: 12px; color: #10b981; border: 1px solid #064e3b;">
+                            model.fit()
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="background-color: #111827; border: 1px solid #1e293b; padding: 18px 24px; border-radius: 8px; text-align: center;">
+                    <span style="font-size: 14px; color: #cbd5e1;">🎯 <b>Objetivo:</b> Deducir restricciones de física espacial desde telemetría.</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -828,8 +1033,19 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
     const sidebarPanel = document.getElementById('sidebarPanel');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const slidesNav = document.getElementById('slidesNav');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    
     let currentSlide = 0;
     let sidebarOpen = true;
+    let currentTab = 0;
+    
+    // Definir rangos de slides para cada pestaña
+    // Pestaña 0 (Contenido): slides 0-11
+    // Pestaña 1 (Recursos Compartidos): slides 12-13
+    const tabRanges = {
+        0: { start: 0, end: 11 },    // Contenido (slides 1-12)
+        1: { start: 12, end: 13 }    // Recursos Compartidos (slides 13-14)
+    };
 
     // FUNCIÓN PARA EXTRAER TÍTULOS DE LAS LÁMINAS
     function extractSlideTitles() {
@@ -859,32 +1075,41 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         return titles;
     }
 
-    // FUNCIÓN PARA GENERAR NAVEGACIÓN DINÁMICA
+    // FUNCIÓN PARA FILTRAR SLIDES POR PESTAÑA
+    function getSlidesForTab(tabIndex) {
+        const range = tabRanges[tabIndex];
+        const filteredSlides = [];
+        for (let i = range.start; i <= range.end; i++) {
+            filteredSlides.push({
+                index: i,
+                slide: slides[i]
+            });
+        }
+        return filteredSlides;
+    }
+
+    // FUNCIÓN PARA GENERAR NAVEGACIÓN DINÁMICA (FILTRADA POR PESTAÑA)
     function buildSidebarNav() {
+        const filteredSlides = getSlidesForTab(currentTab);
         const titles = extractSlideTitles();
         slidesNav.innerHTML = '';
         
-        titles.forEach((title, index) => {
+        filteredSlides.forEach((item, displayIndex) => {
+            const actualIndex = item.index;
+            const title = titles[actualIndex];
+            
             const navItem = document.createElement('div');
             navItem.className = 'slide-nav-item';
-            if (index === 0) navItem.classList.add('active');
+            navItem.setAttribute('data-slide-index', actualIndex);
+            
+            if (actualIndex === currentSlide) {
+                navItem.classList.add('active');
+            }
             
             navItem.innerHTML = `
-                <span class="slide-num">${index + 1}</span>
+                <span class="slide-num">${displayIndex + 1}</span>
                 <span class="slide-title-text">${title}</span>
             `;
-            
-            navItem.addEventListener('click', () => {
-                showSlide(index);
-                // Scroll suave al elemento activo
-                setTimeout(() => {
-                    navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }, 50);
-            });
-            
-            navItem.addEventListener('mouseenter', function() {
-                this.title = title;
-            });
             
             slidesNav.appendChild(navItem);
         });
@@ -911,15 +1136,48 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         adjustScale();
     });
 
+    // FUNCIÓN PARA CAMBIAR DE PESTAÑA
+    function switchTab(tabIndex) {
+        if (currentTab === tabIndex) return;
+        
+        currentTab = tabIndex;
+        
+        // Actualizar botones de pestañas
+        tabButtons.forEach((btn, idx) => {
+            if (idx === tabIndex) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Resetear a primer slide de la nueva pestaña
+        const range = tabRanges[tabIndex];
+        currentSlide = range.start;
+        
+        // Reconstruir navegación sidebar
+        buildSidebarNav();
+        
+        // Mostrar el nuevo slide directamente (sin llamar showSlide para evitar ciclos)
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[currentSlide].classList.add('active');
+        
+        // Actualizar contador
+        updateSlideCounter(currentSlide);
+    }
+
     // FUNCIÓN PARA ACTUALIZAR CONTADOR DE LÁMINAS
     function updateSlideCounter(index) {
-        slideIndexEl.textContent = index + 1;
-        slideTotalEl.textContent = slides.length;
+        const filteredSlides = getSlidesForTab(currentTab);
+        const relativePosition = filteredSlides.findIndex(item => item.index === index) + 1;
+        
+        slideIndexEl.textContent = relativePosition;
+        slideTotalEl.textContent = filteredSlides.length;
         
         // Actualizar elemento activo en sidebar
         const navItems = slidesNav.querySelectorAll('.slide-nav-item');
         navItems.forEach((item, i) => {
-            if (i === index) {
+            if (i === relativePosition - 1) {
                 item.classList.add('active');
             } else {
                 item.classList.remove('active');
@@ -964,16 +1222,55 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         setTimeout(adjustScale, 300);
     });
 
+    // EVENT LISTENERS PARA PESTAÑAS
+    tabButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const tabIndex = parseInt(e.currentTarget.getAttribute('data-tab'));
+            switchTab(tabIndex);
+        });
+    });
+
+    // EVENT DELEGATION PARA ITEMS DEL SIDEBAR (evita crear múltiples listeners)
+    slidesNav.addEventListener('click', (e) => {
+        const navItem = e.target.closest('.slide-nav-item');
+        if (navItem) {
+            const slideIndex = parseInt(navItem.getAttribute('data-slide-index'));
+            showSlide(slideIndex);
+            // Scroll suave al elemento activo
+            setTimeout(() => {
+                navItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+        }
+    });
+
     window.addEventListener('DOMContentLoaded', () => {
         adjustScale();
         buildSidebarNav();
         updateSlideCounter(currentSlide);
     });
 
-    // 2. SISTEMA DE NAVEGACIÓN ENTRE DIAPOSITIVAS
+    // 2. SISTEMA DE NAVEGACIÓN ENTRE DIAPOSITIVAS (CON LÍMITES POR PESTAÑA)
     function showSlide(index) {
-        if (index >= slides.length) index = 0;
-        if (index < 0) index = slides.length - 1;
+        const range = tabRanges[currentTab];
+        
+        // Detectar intento de navegación fuera del rango actual
+        if (index > range.end) {
+            // Intenta ir más allá del final - cambiar a siguiente pestaña si existe
+            if (currentTab < 1) {
+                switchTab(currentTab + 1);
+                return;
+            }
+            // Si no hay siguiente pestaña, circular dentro de la actual
+            index = range.start;
+        } else if (index < range.start) {
+            // Intenta ir antes del inicio - cambiar a pestaña anterior si existe
+            if (currentTab > 0) {
+                switchTab(currentTab - 1);
+                return;
+            }
+            // Si no hay pestaña anterior, circular dentro de la actual
+            index = range.end;
+        }
 
         slides[currentSlide].classList.remove('active');
         slides[index].classList.add('active');
@@ -992,8 +1289,11 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
 
     // Control por Clic (Mitad derecha avanza, mitad izquierda retrocede)
     document.addEventListener('click', (e) => {
-        // No navegar si hace clic en el sidebar o en el botón toggle
-        if (e.target.closest('.sidebar-panel') || e.target.closest('.sidebar-toggle')) {
+        // No navegar si hace clic en elementos interactivos
+        if (e.target.closest('.sidebar-panel') || 
+            e.target.closest('.sidebar-toggle') || 
+            e.target.closest('.tab-button') ||
+            e.target.closest('a')) {
             return;
         }
         
