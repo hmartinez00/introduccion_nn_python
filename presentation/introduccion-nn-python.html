@@ -393,215 +393,6 @@
         .repo-link {
             top: 80px;
         }
-
-        /* RESPONSIVE TABS */
-        @media (max-width: 768px) {
-            .tabs-panel {
-                height: 60px;
-                padding: 0 15px;
-                gap: 15px;
-            }
-
-            .tab-button {
-                padding: 15px 16px;
-                font-size: 14px;
-            }
-
-            .sidebar-panel {
-                padding-top: 110px;
-            }
-
-            .sidebar-toggle {
-                top: 70px;
-            }
-
-            .repo-link {
-                top: 70px;
-            }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 2560px) {
-            .sidebar-panel {
-                width: 350px;
-            }
-        }
-
-        @media (max-width: 1920px) {
-            .slide-container {
-                padding: 160px 115px 80px 115px;
-            }
-
-            .sidebar-panel {
-                width: 320px;
-            }
-
-            .sidebar-toggle.open {
-                left: 335px;
-            }
-        }
-
-        @media (max-width: 1600px) {
-            .slide-container {
-                padding: 155px 110px 80px 110px;
-            }
-
-            .sidebar-panel {
-                width: 300px;
-            }
-
-            .sidebar-toggle.open {
-                left: 315px;
-            }
-
-            .slide-nav-item {
-                font-size: 15px;
-                padding: 12px 16px;
-            }
-        }
-
-        @media (max-width: 1280px) {
-            .slide-container {
-                padding: 150px 105px 80px 105px;
-            }
-
-            .sidebar-panel {
-                width: 280px;
-                padding-top: 60px;
-            }
-
-            .sidebar-toggle.open {
-                left: 295px;
-            }
-
-            .sidebar-header {
-                padding: 20px 20px 15px;
-            }
-
-            .slide-nav-item {
-                font-size: 14px;
-                padding: 12px 14px;
-                gap: 10px;
-            }
-
-            .slide-nav-item .slide-num {
-                font-size: 12px;
-                padding: 3px 6px;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar-panel {
-                width: 250px;
-            }
-
-            .sidebar-toggle.open {
-                left: 265px;
-            }
-
-            .slide-title {
-                font-size: 44px;
-                padding-left: 20px;
-            }
-
-            .slide-container {
-                padding: 150px 100px 80px 100px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .slide-container {
-                padding: 140px 80px 70px 80px;
-            }
-
-            .sidebar-panel {
-                width: 220px;
-            }
-
-            .sidebar-toggle {
-                left: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
-            }
-
-            .sidebar-toggle.open {
-                left: 235px;
-            }
-
-            .sidebar-header {
-                padding: 15px 15px 10px;
-            }
-
-            .sidebar-header h3 {
-                font-size: 14px;
-            }
-
-            .slide-nav-item {
-                font-size: 13px;
-                padding: 10px 12px;
-                gap: 8px;
-            }
-
-            .slide-nav-item .slide-num {
-                font-size: 11px;
-                padding: 2px 5px;
-                min-width: 25px;
-            }
-
-            .nav-instructions {
-                font-size: 11px;
-            }
-
-            .slide-counter {
-                font-size: 12px;
-                padding: 8px 14px;
-            }
-
-            .repo-link {
-                font-size: 12px;
-                padding: 8px 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .slide-container {
-                padding: 130px 60px 60px 60px;
-            }
-
-            .sidebar-panel {
-                width: 200px;
-            }
-
-            .sidebar-toggle.open {
-                left: 215px;
-            }
-
-            .slide-title {
-                font-size: 32px;
-            }
-
-            p, li {
-                font-size: 18px;
-            }
-
-            .nav-instructions {
-                font-size: 10px;
-                bottom: 15px;
-            }
-
-            .slide-counter {
-                bottom: 15px;
-                right: 15px;
-                font-size: 11px;
-            }
-
-            .repo-link {
-                top: 15px;
-                right: 15px;
-                font-size: 11px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -885,68 +676,11 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
     </div>
 
     <div class="slide-container">
-        <h2 class="slide-title">Laboratorios Prácticos y Recursos Compartidos</h2>
-        <div class="content-area">
-            <div class="table-layout" style="padding: 0 40px;">
-                <p style="font-size: 24px; color: #94a3b8; margin-bottom: 30px; text-align: center;">Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:</p>
-                <table style="width: 100%;">
-                    <thead>
-                        <tr>
-                            <th style="width: 20%; text-align: left;">Sesión</th>
-                            <th style="width: 45%; text-align: left;">Componente Práctico</th>
-                            <th style="width: 35%; text-align: center;">Enlace de Ejecución</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">Sesión 1</strong></td>
-                            <td>Laboratorio de Regresión en Física<br><span style="font-size: 18px; color: #64748b;">(Estimación Continua)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">Sesión 2</strong></td>
-                            <td>Laboratorio de Clasificación de Imágenes<br><span style="font-size: 18px; color: #64748b;">(Visión Artificial)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
-                                </a>
-                            </td>
-                        </tr>
-                        <!-- <tr>
-                            <td><strong style="color: #38bdf8;">GNSS</strong></td>
-                            <td>Laboratorio de Retos - Navegación<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_gnss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">SS</strong></td>
-                            <td>Laboratorio de Retos - Sistemas Espaciales<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_ss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
-                                </a>
-                            </td>
-                        </tr> -->
-                    </tbody>
-                </table>
-                <p style="font-size: 18px; color: #64748b; margin-top: 30px; text-align: center; font-style: italic;">✨ Todos los laboratorios se ejecutan en la nube sin necesidad de instalar dependencias locales</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide-container">
         <h2 class="slide-title">Hoja de Ruta de Ingeniería</h2>
         <div class="content-area">
             <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #f8fafc; display: flex; flex-direction: column; gap: 30px;">
         
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
             
                     <div style="background-color: #111827; border: 1px solid #374151; border-top: 4px solid #9ca3af; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between;">
                         <div>
@@ -1022,6 +756,64 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
             </div>
         </div>
     </div>
+
+    <div class="slide-container">
+        <h2 class="slide-title">Laboratorios Prácticos y Recursos Compartidos</h2>
+        <div class="content-area">
+            <div class="table-layout" style="padding: 0 40px;">
+                <p style="font-size: 24px; color: #94a3b8; margin-bottom: 30px; text-align: center;">Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:</p>
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%; text-align: left;">Sesión</th>
+                            <th style="width: 45%; text-align: left;">Componente Práctico</th>
+                            <th style="width: 35%; text-align: center;">Enlace de Ejecución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">Sesión 1</strong></td>
+                            <td>Laboratorio de Regresión en Física<br><span style="font-size: 18px; color: #64748b;">(Estimación Continua)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">Sesión 2</strong></td>
+                            <td>Laboratorio de Clasificación de Imágenes<br><span style="font-size: 18px; color: #64748b;">(Visión Artificial)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <td><strong style="color: #38bdf8;">GNSS</strong></td>
+                            <td>Laboratorio de Retos - Navegación<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_gnss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #38bdf8;">SS</strong></td>
+                            <td>Laboratorio de Retos - Sistemas Espaciales<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
+                            <td style="text-align: center;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_ss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
+                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                                </a>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <p style="font-size: 18px; color: #64748b; margin-top: 30px; text-align: center; font-style: italic;">✨ Todos los laboratorios se ejecutan en la nube sin necesidad de instalar dependencias locales</p>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
