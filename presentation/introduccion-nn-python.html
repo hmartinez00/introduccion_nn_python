@@ -757,63 +757,80 @@ model.compile(optimizer=<span class="code-keyword">'adam'</span>,
         </div>
     </div>
 
-    <div class="slide-container">
-        <h2 class="slide-title">Laboratorios Prácticos y Recursos Compartidos</h2>
-        <div class="content-area">
-            <div class="table-layout" style="padding: 0 40px;">
-                <p style="font-size: 24px; color: #94a3b8; margin-bottom: 30px; text-align: center;">Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:</p>
-                <table style="width: 100%;">
+    <div class="slide-container" style="padding: 10px 20px; max-height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        
+        <h2 class="slide-title" style="font-size: 32px; margin-top: 0; margin-bottom: 5px; text-align: center;">Laboratorios Prácticos y Recursos Compartidos</h2>
+        
+        <div class="content-area" style="margin-top: 0;">
+            <div class="table-layout" style="padding: 0 20px;">
+                
+                <p style="font-size: 18px; color: #94a3b8; margin-top: 0; margin-bottom: 15px; text-align: center;">
+                    Acceso directo a los cuadernos interactivos en <strong>Google Colab</strong>. Haz clic en cualquier enlace para comenzar:
+                </p>
+                
+                <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
                     <thead>
-                        <tr>
-                            <th style="width: 20%; text-align: left;">Sesión</th>
-                            <th style="width: 45%; text-align: left;">Componente Práctico</th>
-                            <th style="width: 35%; text-align: center;">Enlace de Ejecución</th>
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <th style="width: 15%; text-align: left; padding: 6px 4px; color: #64748b; font-size: 14px; text-transform: uppercase;">Sesión / Tipo</th>
+                            <th style="width: 55%; text-align: left; padding: 6px 4px; color: #64748b; font-size: 14px; text-transform: uppercase;">Componente Práctico / Recurso</th>
+                            <th style="width: 30%; text-align: center; padding: 6px 4px; color: #64748b; font-size: 14px; text-transform: uppercase;">Enlace de Ejecución</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">Sesión 1</strong></td>
-                            <td>Laboratorio de Regresión en Física<br><span style="font-size: 18px; color: #64748b;">(Estimación Continua)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <td style="padding: 8px 4px;"><strong style="color: #38bdf8;">Sesión 1</strong></td>
+                            <td style="padding: 8px 4px; line-height: 1.3;">Laboratorio de Regresión en Física<br><span style="font-size: 13px; color: #64748b;">(Estimación Continua)</span></td>
+                            <td style="text-align: center; padding: 8px 4px;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button" style="padding: 5px 12px; font-size: 13px; display: inline-block;">
+                                    <i class="fa-brands fa-google" style="margin-right: 6px;"></i>Abrir en Colab
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">Sesión 2</strong></td>
-                            <td>Laboratorio de Clasificación de Imágenes<br><span style="font-size: 18px; color: #64748b;">(Visión Artificial)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <td style="padding: 8px 4px;"><strong style="color: #38bdf8;">Sesión 2</strong></td>
+                            <td style="padding: 8px 4px; line-height: 1.3;">Laboratorio de Clasificación de Imágenes<br><span style="font-size: 13px; color: #64748b;">(Visión Artificial)</span></td>
+                            <td style="text-align: center; padding: 8px 4px;">
+                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button" style="padding: 5px 12px; font-size: 13px; display: inline-block;">
+                                    <i class="fa-brands fa-google" style="margin-right: 6px;"></i>Abrir en Colab
                                 </a>
                             </td>
                         </tr>
-                        <!-- <tr>
-                            <td><strong style="color: #38bdf8;">GNSS</strong></td>
-                            <td>Laboratorio de Retos - Navegación<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_gnss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <td style="padding: 8px 4px;"><strong style="color: #a855f7;">Teoría</strong></td>
+                            <td style="padding: 8px 4px; line-height: 1.3;">The Neural Network Zoo<br><span style="font-size: 13px; color: #64748b;">(Compendio Arquitectónico Asimov Institute)</span></td>
+                            <td style="text-align: center; padding: 8px 4px;">
+                                <a href="https://www.asimovinstitute.org/neural-network-zoo/" target="_blank" rel="noopener noreferrer" class="colab-button" style="padding: 5px 12px; font-size: 13px; display: inline-block; background-color: #2e1065; border-color: #a855f7;">
+                                    <i class="fa-solid fa-book" style="margin-right: 6px;"></i>Ver Arquitecturas
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td><strong style="color: #38bdf8;">SS</strong></td>
-                            <td>Laboratorio de Retos - Sistemas Espaciales<br><span style="font-size: 18px; color: #64748b;">(Desafío Avanzado)</span></td>
-                            <td style="text-align: center;">
-                                <a href="https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/practicas_ss.ipynb#copy=true" target="_blank" rel="noopener noreferrer" class="colab-button">
-                                    <i class="fa-brands fa-google" style="margin-right: 8px;"></i>Abrir en Colab
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <td style="padding: 8px 4px;"><strong style="color: #e11d48;">Simulador</strong></td>
+                            <td style="padding: 8px 4px; line-height: 1.3;">TensorFlow Playground Interactive<br><span style="font-size: 13px; color: #64748b;">(Visualización Dinámica de Capas y Redes)</span></td>
+                            <td style="text-align: center; padding: 8px 4px;">
+                                <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.79207&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank" rel="noopener noreferrer" class="colab-button" style="padding: 5px 12px; font-size: 13px; display: inline-block; background-color: #4c0519; border-color: #e11d48;">
+                                    <i class="fa-solid fa-flask" style="margin-right: 6px;"></i>Abrir Simulador
                                 </a>
                             </td>
-                        </tr> -->
+                        </tr>
+                        <tr style="border-bottom: 1px solid #1e293b;">
+                            <td style="padding: 8px 4px;"><strong style="color: #10b981;">Dataset</strong></td>
+                            <td style="padding: 8px 4px; line-height: 1.3;">TF Catalog: EMNIST Dataset<br><span style="font-size: 13px; color: #64748b;">(Caracteres Alfanuméricos Manuscritos Extendidos)</span></td>
+                            <td style="text-align: center; padding: 8px 4px;">
+                                <a href="https://www.tensorflow.org/datasets/catalog/emnist?hl=es-419" target="_blank" rel="noopener noreferrer" class="colab-button" style="padding: 5px 12px; font-size: 13px; display: inline-block; background-color: #064e3b; border-color: #10b981;">
+                                    <i class="fa-solid fa-database" style="margin-right: 6px;"></i>Ver Catálogo TF
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <p style="font-size: 18px; color: #64748b; margin-top: 30px; text-align: center; font-style: italic;">✨ Todos los laboratorios se ejecutan en la nube sin necesidad de instalar dependencias locales</p>
+                
+                <p style="font-size: 14px; color: #64748b; margin-top: 15px; margin-bottom: 0; text-align: center; font-style: italic;">
+                    ✨ Todos los laboratorios se ejecutan en la nube sin necesidad de instalar dependencias locales
+                </p>
             </div>
         </div>
     </div>
-
 
 </div>
 
