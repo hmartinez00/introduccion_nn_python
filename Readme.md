@@ -63,9 +63,10 @@ Orientada al tratamiento de matrices multidimensionales (tensores) en visión po
 Para mantener el orden del proyecto, se sugiere organizar los archivos bajo el siguiente árbol de directorios:
 
 ```text
-├── presentation/
-│   └── introduccion-nn-python.html  # Presentación interactiva y responsiva del taller
+├── groups/                          # Info de Grupos
 ├── notebooks/
+│   ├── Labs/                        # Labs de práctica con problemas propuestos
+│   ├── solutions/                   # Soluciones a Labs de práctica
 │   ├── sesion_1_regresion.ipynb     # Cuaderno interactivo de la Sesión 1
 │   └── sesion_2_clasificacion.ipynb # Cuaderno interactivo de la Sesión 2
 └── README.md                        # Documentación principal del repositorio
