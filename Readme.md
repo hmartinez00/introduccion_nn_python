@@ -18,12 +18,24 @@ Disponible en el siguiente [enlace](https://hmartinezdev.com:8081/storage/upload
 ### Cuadernos de Práctica (Notebooks)
 Puedes ejecutar los laboratorios directamente en la nube haciendo clic en los siguientes botones:
 
+#### * **Sesiones de trabajo**
+
 | Sesión | Componente Práctico | Enlace de Ejecución |
 | :--- | :--- | :--- |
 | **Sesión 1** | Laboratorio de Regresión en Física (Estimación Continua) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_1_regresion.ipynb#copy=true) |
 | **Sesión 2** | Laboratorio de Clasificación de Imágenes (Vision Artificial) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/sesion_2_clasificacion.ipynb#copy=true) |
-| **Cuaderno práctico GNSS** | Laboratorio de retos - Navegación | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practicas_gnss.ipynb#copy=true) |
+
+#### * **Problemas propuestos**
+
+| Sesión | Componente Práctico | Enlace de Ejecución |
+| :--- | :--- | :--- |
+| **Cuaderno práctico Aeronáutica** | Laboratorio de retos - Aeronáutica | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_aeronautica.ipynb#copy=true) |
+| **Cuaderno práctico Electrónica** | Laboratorio de retos - Electrónica | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_electronica.ipynb#copy=true) |
+| **Cuaderno práctico Geografía** | Laboratorio de retos - Geografía | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_geografia.ipynb#copy=true) |
+| **Cuaderno práctico Visión Artificial** | Laboratorio de retos - Visión Artificial | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_imagenes.ipynb#copy=true) |
 | **Cuaderno práctico SS** | Laboratorio de retos - Sistemas Espaciales | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_sistemas_espaciales.ipynb#copy=true) |
+| **Cuaderno práctico Telecomunicaciones** | Laboratorio de retos - Telecomunicaciones | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practica_telecomunicaciones.ipynb#copy=true) |
+| **Cuaderno práctico GNSS** | Laboratorio de retos - Navegación | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/hmartinez00/introduccion-nn-python/blob/main/notebooks/labs/practicas_gnss.ipynb#copy=true) |
 
 
 ---
