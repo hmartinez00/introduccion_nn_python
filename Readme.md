@@ -13,7 +13,7 @@ Para garantizar una experiencia fluida y **cero configuraciones locales de hardw
 
 ### Presentación del taller
 
-Disponible en el siguiente [enlace](https://hmartinezdev.com:8081/storage/uploads/simpleproject_6a22f2e272919_introduccion-nn-python.html).
+Disponible en el siguiente [enlace](https://hmartinezdev.com/sample/introduccion_nn_python).
 
 ### Cuadernos de Práctica (Notebooks)
 Puedes ejecutar los laboratorios directamente en la nube haciendo clic en los siguientes botones:
